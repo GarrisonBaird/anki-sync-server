@@ -74,6 +74,7 @@ class SyncCollectionHandler(Syncer):
 
         # Some insanity added in Anki 2.0.13
         if (client == 'ankidroid' and version_int[0] >=2 and version_int[1] >= 3) \
+        or (client == 'ankimobile') \
         or (client == 'ankidesktop' and version_int[0] >= 2 and version_int[1] >= 0 and version_int[2] >= 13):
             return {
               'scm': self.col.scm,
