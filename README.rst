@@ -240,6 +240,14 @@ As of AnkiDroid 2.6 the sync server can be changed in the settings:
 At the moment, there isn't any way to get the Anki iOS app to point at
 your personal sync server. 😕
 
+But it is possible to sync iOS app with your server by playing a "MITM" attack, don't try to play in this way if you are not an experienced expert:
+
+1. Generate a self-signed CA, import it to your iOS device (warning: this may break the original CA security system, keep your CA key carefuly)
+2. Sign a cert with -subj "/CN=sync.ankiweb.net", config your apache/nginx server to proxy anki-sync-server with this cert
+3. Change your router's config (hosts), point sync.ankiweb.net to your server
+4. Then you should be able to sync with your personal sync server! But it will only be usable under your own wifi, or you can setup a VPN as a workaround
+5. Currently it still has some problems in media sync with iOS app, you can disable media sync in settings, import your decks with media in other ways, then sync with your server
+
 Running with Supervisor
 -----------------------
 
